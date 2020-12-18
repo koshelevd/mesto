@@ -11,15 +11,30 @@
   text-rendering: optimizeLegibility;
   background-color: #000;
   color: #fff;
+  
 }
 
 .page__container {
   min-width: 320px;
+  max-width: 1280px;
   width: 100%;
-  /* min-height: 100vh;
-  display: flex;
+  min-height: 100vh;
+  /* display: flex;
   flex-direction: column; */
   /*Не забывайте про прижатие подвала в можно лучше*/
   margin: 0 auto;
   /* padding: 34px 0 24px; */
+
+}
+
+.page__header {
+  width: 100%;
+  margin: 0 auto;
+  padding: 28px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .page__header {
+    padding: 45px 0 37px;
+  }
 }
