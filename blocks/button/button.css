@@ -4,6 +4,14 @@
   border: none;
 }
 
+.button_type_like {
+  background-image: url(../../images/button-like.svg);
+  /* background-size: 21px 18px; */
+  width: 21px;
+  height: 18px;
+
+}
+
 .button_type_add {
   background-image: url(../../images/button-add.svg);
 

@@ -1,0 +1,13 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 282px);
+  grid-gap: 20px 17px;
+  justify-content: center;
+  padding: 0 19px;
+}
+
+@media screen and (min-width: 920px) {
+  .cards {
+    padding: 0;
+  }
+}
