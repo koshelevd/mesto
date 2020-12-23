@@ -11,41 +11,4 @@
   text-rendering: optimizeLegibility;
   background-color: #000;
   color: #fff;
-  
-}
-
-.page__container {
-  min-width: 320px;
-  max-width: 1280px;
-  width: 100%;
-
-  /* display: flex;
-  flex-direction: column; */
-  /*Не забывайте про прижатие подвала в можно лучше*/
-  margin: 0 auto;
-  /* padding: 34px 0 24px; */
-
-}
-
-.page__header {
-  width: 100%;
-  margin: 0 auto;
-  padding: 28px 0;
-}
-
-.page__content {
-  width: 100%;
-  margin: 42px auto 50px;
-  /* padding: 0 19px; */
-}
-
-@media screen and (min-width: 768px) {
-  .page__header {
-    padding: 45px 0 37px;
-  }
-
-  .page__content {
-    width: 100%;
-    margin-top: 40px;
-  }
 }

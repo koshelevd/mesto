@@ -27,14 +27,10 @@
           <img src="./images/profile-avatar.jpg" alt="Жак-Ив Кусто" class="user-info__avatar">
           <figcaption class="user-info__caption">
             <div class="user-info__header">
-              <h1 class="user-info__name">
-                Жак-Ив Кусто
-              </h1>
+              <h1 class="user-info__name">Жак-Ив Кусто</h1>
               <button class="button button_type_edit" aria-label="Редактировать профиль"></button>
             </div>
-            <p class="user-info__description">
-              Исследователь океана
-            </p>
+            <p class="user-info__description">Исследователь океана</p>
           </figcaption>
         </figure>
         <button class="button button_type_add profile__button smoothly" aria-label="Добавить фото"></button>
@@ -89,7 +85,27 @@
         </figure>
       </section>
     </main>
+
+    <footer class="footer section page__footer">
+      <p class="footer__copyright">
+        &copy;&nbsp;2020 Mesto Russia
+      </p>
+    </footer>
+
+    <section class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form">
+          <input type="text" class="popup__input popup__input_type_text popup__name" placeholder="Имя Фамилия">
+          <input type="text" class="popup__input popup__input_type_text popup__description" placeholder="Род занятий">
+          <input type="submit" class="popup__input popup__input_type_submit smoothly" value="Сохранить"> 
+        </form>
+        <button class="button button_type_close popup__close-button smoothly"></button>
+
+      </div>
+    </section>
   </div>
+  <script src="scripts/index.js"></script>
 </body>
 
 </html>

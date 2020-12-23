@@ -8,88 +8,17 @@
   
 }
 
-.user-info__avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-
-.user-info__caption {
-  display: flex;
-  flex-direction: column;
-  margin-top: 27px;
-}
-
-.user-info__header {
-  font-weight: 500;
-  font-size: 27px;
-  line-height: 1.21;
-  display: flex;
-  align-items: baseline;
-  position: relative;
-  left: 13px;
-}
-
-.user-info__name {
-  font-weight: 500;
-  font-size: 27px;
-  line-height: 1.21;
-  margin: 0 11px 0 0;
-}
-
-.user-info__description {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.21;
-  margin: 9px 0 0;
-  text-align: center;
-}
-
-
 @media screen and (min-width: 425px) {
   .user-info {
     flex-direction: row;
     align-items: center;
   }
-
-  .user-info__caption {
-    margin-top: 0;
-  }
 }
-
-
-
 
 @media screen and (min-width: 768px) {
   .user-info {
      max-width: 486px;
      justify-content: flex-start;
      align-items: center;
-  }
-  .user-info__caption {
-    margin-left: 30px;
-  }
-
-  .user-info__header {
-    left: 0;
-  }
-
-  .user-info__name {
-    font-size: 42px;
-    line-height: 1.14;
-    margin: 0 19px 0 0;
-  }
-  
-  .user-info__description {
-    font-size: 18px;
-    text-align: left;
-    margin-top: 0;
-  }
-  
-  
-  .user-info__header {
-    font-size: 42px;
-    line-height: 1.14;
-    margin-bottom: 9px;
   }
 }
