@@ -35,7 +35,7 @@
         </figure>
         <button class="button button_type_add profile__button smoothly" aria-label="Добавить фото"></button>
       </section>
-      <section class="cards section section__cards">
+      <section class="section section__cards cards">
         <figure class="card">
           <img src="./images/card-baikal.jpg" alt="Вид на озеро Байкал" class="card__image">
           <figcaption class="card__caption">
@@ -95,9 +95,9 @@
     <section class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form">
-          <input type="text" class="popup__input popup__input_type_text popup__name" placeholder="Имя Фамилия">
-          <input type="text" class="popup__input popup__input_type_text popup__description" placeholder="Род занятий">
+        <form class="popup__form" name="editProfileForm">
+          <input type="text" class="popup__input popup__input_type_text popup__name" placeholder="Имя Фамилия" name="inputName">
+          <input type="text" class="popup__input popup__input_type_text popup__description" placeholder="Род занятий" name="inputDescription">
           <input type="submit" class="popup__input popup__input_type_submit smoothly" value="Сохранить"> 
         </form>
         <button class="button button_type_close popup__close-button smoothly"></button>
