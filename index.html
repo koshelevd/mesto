@@ -28,19 +28,19 @@
           <figcaption class="user-info__caption">
             <div class="user-info__header">
               <h1 class="user-info__name">Жак-Ив Кусто</h1>
-              <button class="button button_type_edit" aria-label="Редактировать профиль"></button>
+              <button class="button button_type_edit user-info__button" type="button" aria-label="Редактировать профиль"></button>
             </div>
             <p class="user-info__description">Исследователь океана</p>
           </figcaption>
         </figure>
-        <button class="button button_type_add profile__button smoothly" aria-label="Добавить фото"></button>
+        <button class="button button_type_add profile__button smoothly" type="button" aria-label="Добавить фото"></button>
       </section>
       <section class="cards section">
         <figure class="card">
           <img src="./images/card-baikal.jpg" alt="Вид на озеро Байкал" class="card__image">
           <figcaption class="card__caption">
             <h2 class="card__header">Байкал</h2>
-            <button class="button button_type_like" aria-label="Нравится"></button>
+            <button class="button button_type_like card__button" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
 
@@ -48,7 +48,7 @@
           <img src="./images/card-roza.jpg" alt="Лес в горах Розы Хутор" class="card__image">
           <figcaption class="card__caption">
             <h2 class="card__header">Роза Хутор, Россия</h2>
-            <button class="button button_type_like" aria-label="Нравится"></button>
+            <button class="button button_type_like card__button" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
 
@@ -56,7 +56,7 @@
           <img src="./images/card-kamchatka.jpg" alt="Вулкан на полуострове Камчатке" class="card__image">
           <figcaption class="card__caption">
             <h2 class="card__header">Камчатка</h2>
-            <button class="button button_type_like" aria-label="Нравится"></button>
+            <button class="button button_type_like card__button" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
 
@@ -64,7 +64,7 @@
           <img src="./images/card-vyborg.jpg" alt="Парк Монрепо, Выборг" class="card__image">
           <figcaption class="card__caption">
             <h2 class="card__header">Парк Монрепо, Выборг</h2>
-            <button class="button button_type_like" aria-label="Нравится"></button>
+            <button class="button button_type_like card__button" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
 
@@ -72,7 +72,7 @@
           <img src="./images/card-ural.jpg" alt="Уральские горы" class="card__image">
           <figcaption class="card__caption">
             <h2 class="card__header">Урал</h2>
-            <button class="button button_type_like" aria-label="Нравится"></button>
+            <button class="button button_type_like card__button" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
 
@@ -80,7 +80,7 @@
           <img src="./images/card-peter.jpg" alt="Казанский собор" class="card__image">
           <figcaption class="card__caption">
             <h2 class="card__header">Санкт-Петербург</h2>
-            <button class="button button_type_like" aria-label="Нравится"></button>
+            <button class="button button_type_like card__button" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
       </section>
@@ -95,12 +95,12 @@
     <section class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="editProfileForm">
-          <input type="text" class="popup__input popup__input_type_text popup__name" placeholder="Имя Фамилия" name="inputName">
-          <input type="text" class="popup__input popup__input_type_text popup__description" placeholder="Род занятий" name="inputDescription">
+        <form class="popup__form" name="edit-profile-form">
+          <input type="text" class="popup__input popup__input_type_text" placeholder="Имя Фамилия" name="input-name">
+          <input type="text" class="popup__input popup__input_type_text" placeholder="Род занятий" name="input-description">
           <input type="submit" class="popup__input popup__input_type_submit smoothly" value="Сохранить"> 
         </form>
-        <button class="button button_type_close popup__close-button smoothly"  aria-label="Закрыть окно"></button>
+        <button class="button button_type_close popup__close-button smoothly" type="button" aria-label="Закрыть окно"></button>
 
       </div>
     </section>
