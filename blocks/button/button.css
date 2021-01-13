@@ -3,11 +3,11 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  transition-duration: .4s;
+  transition-timing-function: ease-in-out;
 }
 
 .button:hover {
-  transition-duration: .4s;
-  transition-timing-function: ease-in-out;
   opacity: .6;
 }
 
