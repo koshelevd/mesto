@@ -69,14 +69,12 @@ function addCard(data) {
 
 
 function openImagePopup(event) {
-  
+  const title = event.target.closest('.card').querySelector('.card__header').textContent;
   photoElement.src = event.target.src;
-  console.log();
-  photoCaption.textContent = event.target.closest('.card').querySelector('.card__header').textContent;
+  photoElement.alt = title;
+  photoCaption.textContent = title;
   popupImage.classList.toggle('popup_opened');
 }
-
-
 
 
 function togglePopup(popup) {
@@ -88,9 +86,11 @@ function toggleLike(event) {
   event.target.classList.toggle('button_type_like-active');
 }
 
+
 function deleteCard(event) {
   event.target.closest('.card').remove();
 }
+
 
 function closePopup(event) {
   const currentPopup = document.querySelector('.popup_opened')
@@ -99,11 +99,13 @@ function closePopup(event) {
   }
 }
 
+
 function openEditForm() {
   nameField.value = userName.textContent;
   descriptionField.value = userDescription.textContent;
   togglePopup(popupEdit);
 }
+
 
 function openAddForm() {
   titleField.value = '';
@@ -118,6 +120,7 @@ function handleEditFormSubmit(event) {
   userDescription.textContent = descriptionField.value;
   togglePopup(popupEdit);
 }
+
 
 function handleAddFormSubmit(event) {
   event.preventDefault();
