@@ -1,5 +1,5 @@
 .popup__input_type_submit {
-  margin-top: 14px;
+  margin-top: 26px;
   min-height: 46px;
   border-radius: 2px;
   background-color: #000;
@@ -11,9 +11,16 @@
   cursor: pointer;
 }
 
+.popup__input_type_submit:disabled {
+  opacity: .2;
+  background-color: #fff;
+  color: #000;
+  border: #000 1px solid;
+}
+
 @media screen and (min-width: 920px) {
   .popup__input_type_submit {
-    margin-top: 16px;
+    margin-top: 29px;
     min-height: 50px;
     border-radius: 2px;
     font-size: 18px;

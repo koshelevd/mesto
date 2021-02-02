@@ -16,17 +16,36 @@ const descriptionField = popupEdit.querySelector('.popup__input_type_text[name=i
 const titleField = popupAdd.querySelector('.popup__input_type_text[name=input-title]');
 const linkField = popupAdd.querySelector('.popup__input_type_text[name=input-link]');
 const popupFormEdit = popupEdit.querySelector('.popup__form');
+const saveProfileButton = popupFormEdit.querySelector('.popup__input_type_submit');
 const popupFormAdd = popupAdd.querySelector('.popup__form');
+const saveCardButton = popupFormAdd.querySelector('.popup__input_type_submit');
 const cardTemplate = document.querySelector('#card-template').content;
 
-function openPopup(popup) {
-  // Open the popup.
-  popup.classList.add('popup_opened');
+function handleEscapePressed(event) {
+  // Close popup if 'Esc' is pressed.
+  if (event.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
 }
 
 function closePopup(popup) {
   // Close the popup.
+  document.removeEventListener('keydown', handleEscapePressed);
   popup.classList.remove('popup_opened');
+}
+
+function handleOverlayClick(event) {
+  // Close popup if clicked outside of the form.
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
+  }
+}
+
+function openPopup(popup) {
+  // Open the popup.
+  document.addEventListener('keydown', handleEscapePressed);
+  popup.classList.add('popup_opened');
 }
 
 function handleOpenImagePopup(data) {
@@ -70,23 +89,12 @@ function renderCard(container, card) {
   container.prepend(createCard(card));
 }
 
-function handleOverlayClick(event) {
-  // Close popup if clicked outside of the form.
-  if (event.target === event.currentTarget) {
-    closePopup(event.target);
-  }
-}
-
 function handleEditButtonClick() {
-  // Open edit profile popup and initialize field values.
+  // Open edit profile popup, initialize field values and toggle button state.
   nameField.value = userName.textContent;
   descriptionField.value = userDescription.textContent;
+  toggleButtonState([nameField, descriptionField], saveProfileButton);
   openPopup(popupEdit);
-}
-
-function handleAddButtonClick() {
-  // Open add card form popup.
-  openPopup(popupAdd);
 }
 
 function handleEditFormSubmit(event) {
@@ -97,14 +105,20 @@ function handleEditFormSubmit(event) {
   closePopup(popupEdit);
 }
 
+function handleAddButtonClick() {
+  // Open add card popup and toggle button state.
+  toggleButtonState([titleField, linkField], saveCardButton);
+  openPopup(popupAdd);
+}
+
 function handleAddFormSubmit(event) {
   // Create the card and close popup.
   event.preventDefault();
-  const data = {
-    name: titleField.value,
-    link: linkField.value,
-  };
-  renderCard(cardsContainer, data);
+  renderCard(cardsContainer,
+    {
+      name: titleField.value,
+      link: linkField.value,
+    });
   popupFormAdd.reset();
   closePopup(popupAdd);
 }

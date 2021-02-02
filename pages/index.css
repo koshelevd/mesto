@@ -53,6 +53,8 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_text.css);
+@import url(../blocks/popup/__validation-error/popup__validation-error.css);
+@import url(../blocks/popup/__validation-error/_active/popup__validation-error_active.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_submit.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/__figure/popup__figure.css);
