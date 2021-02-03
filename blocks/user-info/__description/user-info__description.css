@@ -4,6 +4,10 @@
   line-height: 1.21;
   margin: 9px 0 0;
   text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 40vw;
 }
 
 @media screen and (min-width: 768px) {
@@ -11,5 +15,11 @@
     font-size: 18px;
     text-align: left;
     margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .user-info__description {
+    max-width: 500px;
   }
 }

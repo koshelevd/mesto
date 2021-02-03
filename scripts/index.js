@@ -91,9 +91,14 @@ function renderCard(container, card) {
 
 function handleEditButtonClick() {
   // Open edit profile popup, initialize field values and toggle button state.
+  const inputList = [nameField, descriptionField];
   nameField.value = userName.textContent;
   descriptionField.value = userDescription.textContent;
-  toggleButtonState([nameField, descriptionField], saveProfileButton);
+
+  inputList.forEach((inputElement) => {
+    checkInputValidity(popupFormEdit, inputElement, validationParams);
+  });
+  toggleButtonState(inputList, saveProfileButton);
   openPopup(popupEdit);
 }
 
@@ -129,9 +134,9 @@ addButton.addEventListener('click', handleAddButtonClick);
 closeButtonEditPopup.addEventListener('click', () => closePopup(popupEdit));
 closeButtonAddPopup.addEventListener('click', () => closePopup(popupAdd));
 closeButtonImagePopup.addEventListener('click', () => closePopup(popupImage));
-popupEdit.addEventListener('click', handleOverlayClick);
-popupAdd.addEventListener('click', handleOverlayClick);
-popupImage.addEventListener('click', handleOverlayClick);
+popupEdit.addEventListener('mousedown', handleOverlayClick);
+popupAdd.addEventListener('mousedown', handleOverlayClick);
+popupImage.addEventListener('mousedown', handleOverlayClick);
 popupFormEdit.addEventListener('submit', handleEditFormSubmit);
 popupFormAdd.addEventListener('submit', handleAddFormSubmit);
 

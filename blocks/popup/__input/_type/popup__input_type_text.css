@@ -5,7 +5,3 @@
   box-sizing: border-box;
   border-bottom: rgba(0, 0, 0, .2) solid 1px;
 }
-
-.popup__input_type_text:invalid {
-  border-bottom: #ff0000 solid 1px;
-}

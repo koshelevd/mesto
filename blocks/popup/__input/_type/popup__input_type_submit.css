@@ -16,6 +16,7 @@
   background-color: #fff;
   color: #000;
   border: #000 1px solid;
+  cursor: default;
 }
 
 @media screen and (min-width: 920px) {
