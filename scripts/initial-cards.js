@@ -24,3 +24,5 @@ const initialCards = [
     link: './images/card-peter.jpg',
   },
 ];
+
+export default initialCards;
