@@ -20,10 +20,7 @@ const descriptionField = popupEdit.querySelector('.popup__input_type_text[name=i
 const titleField = popupAdd.querySelector('.popup__input_type_text[name=input-title]');
 const linkField = popupAdd.querySelector('.popup__input_type_text[name=input-link]');
 const formEditProfile = popupEdit.querySelector('.popup__form');
-const saveProfileButton = formEditProfile.querySelector('.popup__input_type_submit');
 const formAddCard = popupAdd.querySelector('.popup__form');
-const saveCardButton = formAddCard.querySelector('.popup__input_type_submit');
-// const cardTemplate = document.querySelector('#card-template').content;
 const validationParams = {
   inputSelector: '.popup__input_type_text',
   buttonSelector: '.popup__input_type_submit',
