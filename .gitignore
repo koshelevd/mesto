@@ -1,0 +1,6 @@
+tasks
+.editorconfig
+.git
+.eslintrc.yml
+node_modules
+dist
