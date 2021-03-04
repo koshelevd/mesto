@@ -21,8 +21,6 @@ const popupAddForm = new PopupWithForm('.popup_type_add', handleAddFormSubmit);
 const popupEditForm = new PopupWithForm('.popup_type_edit', handleEditFormSubmit);
 const nameField = popupEditForm.form.querySelector('.popup__input_type_text[name=input-name]');
 const descriptionField = popupEditForm.form.querySelector('.popup__input_type_text[name=input-description]');
-const titleField = popupAddForm.form.querySelector('.popup__input_type_text[name=input-title]');
-const linkField = popupAddForm.form.querySelector('.popup__input_type_text[name=input-link]');
 const formEditValidator = new FormValidator(validationParams, popupEditForm.form);
 const formAddValidator = new FormValidator(validationParams, popupAddForm.form);
 const cardsList = new Section({
