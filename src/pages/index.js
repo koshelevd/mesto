@@ -57,20 +57,17 @@ function handleAddButtonClick() {
   popupAddForm.open();
 }
 
-function handleEditFormSubmit() {
+function handleEditFormSubmit(values) {
   // Save values and close popup.
-  profile.setUserInfo({
-    'input-name': nameField.value,
-    'input-description': descriptionField.value,
-  });
+  profile.setUserInfo(values);
   this.close();
 }
 
-function handleAddFormSubmit() {
+function handleAddFormSubmit(values) {
   // Create the card and close popup.
   renderCard({
-    name: titleField.value,
-    link: linkField.value,
+    name: values['input-title'],
+    link: values['input-link'],
   });
   this.close();
 }
