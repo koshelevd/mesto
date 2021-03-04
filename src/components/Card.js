@@ -1,9 +1,11 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-underscore-dangle */
 export default class Card {
-  constructor(data, templateSelector, imagePopupHandler) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._imagePopupHandler = imagePopupHandler;
+    this._handleCardClick = handleCardClick;
   }
 
   _handleLikeCard() {
@@ -29,7 +31,7 @@ export default class Card {
     cardImage.src = this._link;
     cardImage.alt = this._name;
     cardImage.addEventListener('click', () => {
-      this._imagePopupHandler({
+      this._handleCardClick({
         name: this._name,
         link: this._link,
       });

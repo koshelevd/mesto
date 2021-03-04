@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 export default class FormValidator {
   constructor(params, form) {
     this._formElement = form;
