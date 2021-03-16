@@ -1,36 +1,7 @@
-import baikalImage from '../images/card-baikal.jpg';
-import sochiImage from '../images/card-roza.jpg';
-import kamchatkaImage from '../images/card-kamchatka.jpg';
-import vyborgImage from '../images/card-vyborg.jpg';
-import uralImage from '../images/card-ural.jpg';
-import spbImage from '../images/card-peter.jpg';
-
-export const initialCards = [
-  {
-    name: 'Байкал',
-    link: baikalImage,
-  },
-  {
-    name: 'Роза Хутор, Россия',
-    link: sochiImage,
-  },
-  {
-    name: 'Камчатка',
-    link: kamchatkaImage,
-  },
-  {
-    name: 'Парк Монрепо, Выборг',
-    link: vyborgImage,
-  },
-  {
-    name: 'Урал',
-    link: uralImage,
-  },
-  {
-    name: 'Санкт-Петербург',
-    link: spbImage,
-  },
-];
+export const apiOptions = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
+  token: '208d1c83-83f5-4b83-877f-76efb517fd6e',
+};
 export const validationParams = {
   inputSelector: '.popup__input_type_text',
   buttonSelector: '.popup__input_type_submit',

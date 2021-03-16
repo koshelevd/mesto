@@ -8,8 +8,9 @@ import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
 import {
-  initialCards,
+  apiOptions,
   editButton,
   addButton,
   validationParams,
@@ -23,11 +24,8 @@ const nameField = popupEditForm.form.querySelector('.popup__input_type_text[name
 const descriptionField = popupEditForm.form.querySelector('.popup__input_type_text[name=input-description]');
 const formEditValidator = new FormValidator(validationParams, popupEditForm.form);
 const formAddValidator = new FormValidator(validationParams, popupAddForm.form);
-const cardsList = new Section({
-  items: initialCards,
-  renderer: renderCard,
-},
-'.cards');
+const cardsList = new Section({ renderer: renderCard }, '.cards');
+const api = new Api(apiOptions);
 
 function renderCard(data) {
   // Create new card and add it to container.
@@ -57,24 +55,53 @@ function handleAddButtonClick() {
 
 function handleEditFormSubmit(values) {
   // Save values and close popup.
-  profile.setUserInfo(values);
+
+  // data?
+  const data = {
+    name: values['input-name'],
+    about: values['input-description'],
+  };
+
+  api.editProfileInfo(data)
+    .then((result) => {
+      profile.setUserInfo(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
   this.close();
 }
 
 function handleAddFormSubmit(values) {
   // Create the card and close popup.
-  renderCard({
+  
+
+  const data = {
     name: values['input-title'],
     link: values['input-link'],
-  });
+  };
+
+  api.addCard(data)
+    .then((result) => {
+      console.log(result);
+      renderCard(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   this.close();
 }
 
 // Set initial values for UserInfo object.
-profile.setUserInfo({
-  'input-name': 'Жак-Ив Кусто',
-  'input-description': 'Исследователь океанов',
-});
+api.getProfileInfo()
+  .then((result) => {
+    // console.log(result);
+    profile.setUserInfo(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Set elements' click handlers.
 [popupImage, popupAddForm, popupEditForm].forEach(popup => popup.setEventListeners());
@@ -85,4 +112,12 @@ addButton.addEventListener('click', handleAddButtonClick);
 [formEditValidator, formAddValidator].forEach(validator => validator.enableValidation());
 
 // Create initial cards.
-cardsList.renderItems();
+api.getInitialCards()
+  .then((result) => {
+    console.log(result);
+    cardsList.items = result;
+    cardsList.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });

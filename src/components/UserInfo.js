@@ -13,8 +13,8 @@ export default class UserInfo {
 
   setUserInfo(data) {
     // Set profile data.
-    this._userName = data['input-name'];
-    this._userDescription = data['input-description'];
+    this._userName = data.name;
+    this._userDescription = data.about;
     this._refreshInfo();
   }
 
