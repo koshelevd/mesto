@@ -99,7 +99,11 @@
       <button class="button button_type_delete card__delete" type="button" aria-label="Удалить"></button>
       <figcaption class="card__caption">
         <h2 class="card__header">Заголовок карточки</h2>
-        <button class="button button_type_like card__like" type="button" aria-label="Нравится"></button>
+        <div class="card__like">
+          <button class="button button_type_like card__like-button" type="button" aria-label="Нравится"></button>
+          <span class="card__like-counter">0</span>
+        </div>
+        
       </figcaption>
     </figure>
   </template>

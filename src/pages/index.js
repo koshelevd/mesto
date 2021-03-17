@@ -29,7 +29,7 @@ const api = new Api(apiOptions);
 
 function renderCard(data) {
   // Create new card and add it to container.
-  const card = new Card(data, '#card-template', () => popupImage.open(data));
+  const card = new Card(data, '#card-template', () => popupImage.open(data), profile.id, api);
   cardsList.addItem(card.create());
 }
 
@@ -96,7 +96,6 @@ function handleAddFormSubmit(values) {
 // Set initial values for UserInfo object.
 api.getProfileInfo()
   .then((result) => {
-    // console.log(result);
     profile.setUserInfo(result);
   })
   .catch((err) => {
@@ -114,7 +113,6 @@ addButton.addEventListener('click', handleAddButtonClick);
 // Create initial cards.
 api.getInitialCards()
   .then((result) => {
-    console.log(result);
     cardsList.items = result;
     cardsList.renderItems();
   })

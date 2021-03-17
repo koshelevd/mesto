@@ -15,6 +15,7 @@ export default class UserInfo {
     // Set profile data.
     this._userName = data.name;
     this._userDescription = data.about;
+    this.id = data._id;
     this._refreshInfo();
   }
 

@@ -62,4 +62,20 @@ export default class Api {
     })
       .then(this._processResponse);
   }
+
+  deleteCard(cardId) {
+    return fetch(`${this.cardsUrl}/${cardId}`, {
+      method: 'DELETE',
+      headers: this.headers,
+    })
+      .then(this._processResponse);
+  }
+
+  like(cardId, isLiked) {
+    return fetch(`${this.likesUrl}/${cardId}`, {
+      method: isLiked ? 'DELETE' : 'PUT',
+      headers: this.headers,
+    })
+      .then(this._processResponse);
+  }
 }
