@@ -2,18 +2,18 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 export default class Card {
-  constructor(data, templateSelector, handleCardClick, handleDeleteClick, userId, api) {
+  constructor(data, options) {
     // Initialize object.
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
     this._likes = data.likes;
     this._owner = data.owner;
-    this._templateSelector = templateSelector;
-    this._handleCardClick = handleCardClick;
-    this._handleDeleteClick = handleDeleteClick;
-    this._currentUserId = userId;
-    this._api = api;
+    this._templateSelector = options.templateSelector;
+    this._handleCardClick = options.cardClickHandler;
+    this._handleDeleteClick = options.deleteClickHandler;
+    this._currentUserId = options.userId;
+    this._api = options.apiProcessor;
   }
 
   _handleLikeCard() {

@@ -34,38 +34,35 @@ const api = new Api(apiOptions);
 
 function renderCard(data) {
   // Create new card and add it to container.
-  const card = new Card(data,
-    '#card-template',
-    () => popupImage.open(data),
-    handleDeleteCardClick,
-    profile.id,
-    api);
+  const card = new Card(data, {
+    templateSelector: '#card-template',
+    cardClickHandler: () => popupImage.open(data),
+    deleteClickHandler: handleDeleteCardClick,
+    userId: profile.id,
+    apiProcessor: api,
+  });
   cardsList.addItem(card.create());
 }
 
 function handleEditButtonClick() {
   // Open edit profile popup, initialize field values and toggle button state.
-  const inputList = [nameField, descriptionField];
   const userInfo = profile.getUserInfo();
   nameField.value = userInfo.name;
   descriptionField.value = userInfo.description;
 
-  inputList.forEach((inputElement) => {
-    formEditValidator.checkInputValidity(inputElement);
-  });
-  formEditValidator.toggleButtonState();
+  formEditValidator.resetValidation();
   popupEditForm.open();
 }
 
 function handleAddButtonClick() {
   // Open add card popup and toggle button state.
-  formAddValidator.toggleButtonState();
+  formAddValidator.resetValidation();
   popupAddForm.open();
 }
 
 function handleAvatarElementClick() {
   // Open edit avatar popup and toggle button state.
-  formAvatarEditValidator.toggleButtonState();
+  formAvatarEditValidator.resetValidation();
   popupAvatarEditForm.open();
 }
 
@@ -129,7 +126,7 @@ function handleAvatarFormSubmit(values) {
   // Edit profile image and close popup.
   renderLoading(popupAvatarEditForm.form.elements['submit-button'], true);
   api.editAvatar({
-    avatar: values['input-link'],
+    avatar: values['input-picture-link'],
   })
     .then((result) => {
       profile.setUserInfo(result);
@@ -145,8 +142,8 @@ function handleAvatarFormSubmit(values) {
 
 function handleConfirmFormSubmit() {
   // Delete card.
-  this.card.deleteCard(this.cardElement);
-  this.close();
+  popupConfirmForm.card.deleteCard(this.cardElement);
+  popupConfirmForm.close();
 }
 
 // Set initial values for UserInfo object.

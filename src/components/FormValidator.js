@@ -13,7 +13,7 @@ export default class FormValidator {
     return this._inputList.some((inputElement) => !inputElement.validity.valid);
   }
 
-  toggleButtonState() {
+  _toggleButtonState() {
     // Disable submit button if list has invalid input, enable otherwise.
     if (this._hasInvalidInput()) {
       this._buttonElement.setAttribute('disabled', 'true');
@@ -38,7 +38,7 @@ export default class FormValidator {
     errorElement.textContent = '';
   }
 
-  checkInputValidity(inputElement) {
+  _checkInputValidity(inputElement) {
     // Check whether input valid or not.
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
@@ -47,14 +47,22 @@ export default class FormValidator {
     }
   }
 
+  resetValidation() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+
+    this._toggleButtonState();
+  }
+
   enableValidation() {
     // Set validity handlers for input fields.
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     this._buttonElement = this._formElement.querySelector(this._buttonSelector);
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this.checkInputValidity(inputElement);
-        this.toggleButtonState();
+        this._checkInputValidity(inputElement);
+        this._toggleButtonState();
       });
     });
   }
