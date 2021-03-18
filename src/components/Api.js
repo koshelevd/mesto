@@ -54,6 +54,15 @@ export default class Api {
       .then(this._processResponse);
   }
 
+  editAvatar(data) {
+    return fetch(this.avatarUrl, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify(data),
+    })
+      .then(this._processResponse);
+  }
+
   addCard(data) {
     return fetch(this.cardsUrl, {
       method: 'POST',

@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 export default class Card {
-  constructor(data, templateSelector, handleCardClick, userId, api) {
+  constructor(data, templateSelector, handleCardClick, handleDeleteClick, userId, api) {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
@@ -9,6 +9,7 @@ export default class Card {
     this._owner = data.owner;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
     this._currentUserId = userId;
     this._api = api;
   }
@@ -19,17 +20,6 @@ export default class Card {
       .then((result) => {
         this._likes = result.likes;
         this._refreshLikesInfo();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  _handleDeleteCard(event) {
-    // Delete card and remove from page.
-    this._api.deleteCard(this._id)
-      .then(() => {
-        event.target.closest('.card').remove();
       })
       .catch((err) => {
         console.log(err);
@@ -54,6 +44,17 @@ export default class Card {
     }
   }
 
+  deleteCard(cardElement) {
+    // Delete card and remove from page.
+    this._api.deleteCard(this._id)
+      .then(() => {
+        cardElement.remove();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   create() {
     // Create card and initialize its elements. Return DOM card element.
     const cardTemplate = document.querySelector(this._templateSelector).content;
@@ -66,7 +67,8 @@ export default class Card {
     if (this._owner._id === this._currentUserId) {
       const buttonDelete = cardElement.querySelector('.card__delete');
       buttonDelete.classList.add('card__delete_active');
-      buttonDelete.addEventListener('click', this._handleDeleteCard.bind(this));
+      // buttonDelete.addEventListener('click', this._handleDeleteCard.bind(this));
+      buttonDelete.addEventListener('click', (event) => this._handleDeleteClick(event, this));
     }
 
     cardHeader.textContent = this._name;

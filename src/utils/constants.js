@@ -10,3 +10,4 @@ export const validationParams = {
 };
 export const editButton = document.querySelector('.button_type_edit');
 export const addButton = document.querySelector('.button_type_add');
+export const avatarElement = document.querySelector('.user-info__avatar');
