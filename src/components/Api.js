@@ -3,6 +3,7 @@
 /* eslint-disable arrow-parens */
 export default class Api {
   constructor(options) {
+    // Initialize object.
     this.profileUrl = `${options.baseUrl}/users/me`;
     this.avatarUrl = `${this.profileUrl}/avatar`;
     this.cardsUrl = `${options.baseUrl}/cards`;
@@ -14,17 +15,8 @@ export default class Api {
     };
   }
 
-  // GET https://mesto.nomoreparties.co/v1/cohortId/users/me
-  // PATCH https://mesto.nomoreparties.co/v1/cohortId/users/me
-  // PATCH https://mesto.nomoreparties.co/v1/cohortId/users/me/avatar
-
-  // GET https://mesto.nomoreparties.co/v1/cohortId/cards
-  // POST https://mesto.nomoreparties.co/v1/cohortId/cards
-  // DELETE https://mesto.nomoreparties.co/v1/cohortId/cards/cardId
-  // PUT https://mesto.nomoreparties.co/v1/cohortId/cards/likes/cardId
-  // DELETE https://mesto.nomoreparties.co/v1/cohortId/cards/likes/cardId
-
   _processResponse(response) {
+    // Return JSON response if status is ok or generate error.
     if (response.ok) {
       return response.json();
     }
@@ -32,6 +24,7 @@ export default class Api {
   }
 
   getInitialCards() {
+    // Get all cards data.
     return fetch(this.cardsUrl, {
       headers: this.headers,
     })
@@ -39,6 +32,7 @@ export default class Api {
   }
 
   getProfileInfo() {
+    // Get profile info.
     return fetch(this.profileUrl, {
       headers: this.headers,
     })
@@ -46,6 +40,7 @@ export default class Api {
   }
 
   editProfileInfo(data) {
+    // Patch user's name and description.
     return fetch(this.profileUrl, {
       method: 'PATCH',
       headers: this.headers,
@@ -55,6 +50,7 @@ export default class Api {
   }
 
   editAvatar(data) {
+    // Patch user's avatar.
     return fetch(this.avatarUrl, {
       method: 'PATCH',
       headers: this.headers,
@@ -64,6 +60,7 @@ export default class Api {
   }
 
   addCard(data) {
+    // Post new card.
     return fetch(this.cardsUrl, {
       method: 'POST',
       headers: this.headers,
@@ -73,6 +70,7 @@ export default class Api {
   }
 
   deleteCard(cardId) {
+    // Delete the card.
     return fetch(`${this.cardsUrl}/${cardId}`, {
       method: 'DELETE',
       headers: this.headers,
@@ -81,6 +79,7 @@ export default class Api {
   }
 
   like(cardId, isLiked) {
+    // Like the card (or dislike if already liked).
     return fetch(`${this.likesUrl}/${cardId}`, {
       method: isLiked ? 'DELETE' : 'PUT',
       headers: this.headers,

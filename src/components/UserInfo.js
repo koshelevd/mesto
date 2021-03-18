@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 export default class UserInfo {
   constructor(avatarSelector, nameSelector, descriptionSelector) {
+    // Initialize object.
     this._avatarElement = document.querySelector(avatarSelector);
     this._userNameElement = document.querySelector(nameSelector);
     this._userDescriptionElement = document.querySelector(descriptionSelector);

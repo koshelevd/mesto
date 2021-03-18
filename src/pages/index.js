@@ -17,6 +17,7 @@ import {
   validationParams,
 } from '../utils/constants.js';
 
+let currentButtonValue;
 const profile = new UserInfo('.user-info__avatar', '.user-info__name', '.user-info__description');
 const popupImage = new PopupWithImage('.popup_type_image');
 const popupAddForm = new PopupWithForm('.popup_type_add', handleAddFormSubmit);
@@ -75,8 +76,19 @@ function handleDeleteCardClick(event, card) {
   popupConfirmForm.open();
 }
 
+function renderLoading(button, isLoading) {
+  // Set form's button value to indicate request's fetching.
+  if (isLoading) {
+    currentButtonValue = button.value;
+    button.value = 'Сохранение...';
+  } else {
+    button.value = currentButtonValue;
+  }
+}
+
 function handleEditFormSubmit(values) {
   // Save values and close popup.
+  renderLoading(popupEditForm.form.elements['submit-button'], true);
   api.editProfileInfo({
     name: values['input-name'],
     about: values['input-description'],
@@ -86,6 +98,9 @@ function handleEditFormSubmit(values) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(popupEditForm.form.elements['submit-button'], false);
     });
 
   this.close();
@@ -93,6 +108,7 @@ function handleEditFormSubmit(values) {
 
 function handleAddFormSubmit(values) {
   // Create the card and close popup.
+  renderLoading(popupAddForm.form.elements['submit-button'], true);
   api.addCard({
     name: values['input-title'],
     link: values['input-link'],
@@ -102,12 +118,16 @@ function handleAddFormSubmit(values) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(popupAddForm.form.elements['submit-button'], false);
     });
   this.close();
 }
 
 function handleAvatarFormSubmit(values) {
   // Edit profile image and close popup.
+  renderLoading(popupAvatarEditForm.form.elements['submit-button'], true);
   api.editAvatar({
     avatar: values['input-link'],
   })
@@ -116,6 +136,9 @@ function handleAvatarFormSubmit(values) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      renderLoading(popupAvatarEditForm.form.elements['submit-button'], false);
     });
   this.close();
 }
@@ -129,7 +152,6 @@ function handleConfirmFormSubmit() {
 // Set initial values for UserInfo object.
 api.getProfileInfo()
   .then((result) => {
-    console.log(result);
     profile.setUserInfo(result);
   })
   .catch((err) => {

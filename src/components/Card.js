@@ -1,7 +1,9 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-underscore-dangle */
 export default class Card {
   constructor(data, templateSelector, handleCardClick, handleDeleteClick, userId, api) {
+    // Initialize object.
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
@@ -15,7 +17,7 @@ export default class Card {
   }
 
   _handleLikeCard() {
-    // Handle like button state.
+    // Like the card (dislike if already liked).
     this._api.like(this._id, this._isLikedByCurrentUser())
       .then((result) => {
         this._likes = result.likes;
@@ -27,10 +29,12 @@ export default class Card {
   }
 
   _isLikedByCurrentUser() {
+    // Return true if current user already liked the card, false otherwise.
     return this._likes.map(val => val._id).includes(this._currentUserId);
   }
 
   _refreshLikesInfo() {
+    // Set actual likes count and indicate whether current user liked the card.
     if (this._likes.length > 0) {
       this._counterElement.classList.add('card__like-counter_active');
       this._counterElement.textContent = this._likes.length;
@@ -67,7 +71,6 @@ export default class Card {
     if (this._owner._id === this._currentUserId) {
       const buttonDelete = cardElement.querySelector('.card__delete');
       buttonDelete.classList.add('card__delete_active');
-      // buttonDelete.addEventListener('click', this._handleDeleteCard.bind(this));
       buttonDelete.addEventListener('click', (event) => this._handleDeleteClick(event, this));
     }
 
