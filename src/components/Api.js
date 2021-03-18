@@ -8,7 +8,6 @@ export default class Api {
     this.avatarUrl = `${this.profileUrl}/avatar`;
     this.cardsUrl = `${options.baseUrl}/cards`;
     this.likesUrl = `${this.cardsUrl}/likes`;
-    this.token = options.token;
     this.headers = {
       authorization: this.token,
       'Content-Type': 'application/json; charset=UTF-8',
