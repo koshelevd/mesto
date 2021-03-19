@@ -67,7 +67,7 @@ function handleAvatarElementClick() {
 }
 
 function handleDeleteCardClick(event, card) {
-  // popupConfirmForm.form.elements['input-card-id'].value = cardId;
+  // Delete card and remove it from DOM.
   popupConfirmForm.cardElement = event.target.closest('.card');
   popupConfirmForm.card = card;
   popupConfirmForm.open();
