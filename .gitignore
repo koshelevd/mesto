@@ -4,3 +4,4 @@ tasks
 .eslintrc.yml
 node_modules
 dist
+.idea
