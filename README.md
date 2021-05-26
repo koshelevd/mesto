@@ -8,5 +8,6 @@ The layout is adaptive, responsive, **flexbox** and **grid layout**
 technologies are used.
 **BEM** technology is applied. The files are organized according to **Nested 
 BEM**. 
+Webpack, Babel transpilation, CSS minifying.
 
 https://koshelevd.github.io/mesto/
